@@ -1,5 +1,9 @@
 "use client";
 import { cva } from "class-variance-authority";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 
 const LogoStyles = cva("flex items-center", {
   variants: {
@@ -17,14 +21,16 @@ interface LogoProps {
   variant?: "primary" | "stacked";
   isLogoOnly?: boolean;
   dark?: boolean;
+  className?: string;
 }
 
 const Logo = ({
   variant = "primary",
   isLogoOnly = false,
   dark = false,
+  className,
 }: LogoProps) => {
-  const LogoIcon = ({ className = "w-12 h-12", inverted = false }) => (
+  const LogoIcon = ({ className = "w-9 h-9", inverted = false }) => (
     <svg
       className={className}
       viewBox="0 0 48 48"
@@ -50,21 +56,29 @@ const Logo = ({
     </svg>
   );
 
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <div className="p-5" />;
+
+  const { theme } = useTheme();
+  if (theme === "dark") {
+    dark = true;
+  }
+
   if (isLogoOnly) {
     return <LogoIcon inverted={dark} />;
   }
 
   return (
-    <div className={LogoStyles({ variant })}>
+    <Link href="/" className={twMerge(className, LogoStyles({ variant }))}>
       <LogoIcon inverted={dark} />
       <span
-        className={`text-[2rem] font-bold tracking-tight ${
-          dark && "text-white"
-        }`}
+        className={`text-2xl font-bold tracking-tight ${dark && "text-white"}`}
       >
         Organest
       </span>
-    </div>
+    </Link>
   );
 };
 

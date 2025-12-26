@@ -1,5 +1,12 @@
+import Navbar from "@/components/main/Navbar";
+import { ThemeToggle } from "@/components/theme-button";
+
 const Page = () => {
-  return <div>Page</div>;
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 };
 
 export default Page;
