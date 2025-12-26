@@ -1,6 +1,6 @@
 import Logo from "@/components/Logo";
 import { ThemeToggle } from "@/components/theme-button";
-import Button from "@/components/ui/Button";
+import CustomButton from "@/components/ui/CustomButton";
 
 const Navbar = () => {
   return (
@@ -12,17 +12,17 @@ const Navbar = () => {
           <li className="mr-0 md:mr-20">
             <ThemeToggle />
           </li>
-          <Button
+          <CustomButton
             className="hidden md:inline-block"
             href="/signup"
             variant="secondary"
             size="sm"
           >
             Sign Up
-          </Button>
-          <Button href="/login" variant="bordered" size="sm">
+          </CustomButton>
+          <CustomButton href="/login" variant="bordered" size="sm">
             Login
-          </Button>
+          </CustomButton>
         </ul>
       </div>
     </nav>

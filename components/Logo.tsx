@@ -30,6 +30,7 @@ const Logo = ({
   dark = false,
   className,
 }: LogoProps) => {
+  const { theme } = useTheme();
   const LogoIcon = ({ className = "w-9 h-9", inverted = false }) => (
     <svg
       className={className}
@@ -61,7 +62,6 @@ const Logo = ({
   useEffect(() => setMounted(true), []);
   if (!mounted) return <div className="p-5" />;
 
-  const { theme } = useTheme();
   if (theme === "dark") {
     dark = true;
   }
