@@ -7,7 +7,7 @@ export default ({ children }: { children: ReactNode }) => {
       <div className="absolute top-20 left-20">
         <BackToHome />
       </div>
-      {children}
+      <div className="transform scale-85 sm:scale-100">{children}</div>
     </div>
   );
 };
