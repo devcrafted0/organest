@@ -14,13 +14,13 @@ const Navbar = () => {
           </li>
           <CustomButton
             className="hidden md:inline-block"
-            href="/signup"
+            href="/auth/register"
             variant="secondary"
             size="sm"
           >
             Sign Up
           </CustomButton>
-          <CustomButton href="/login" variant="bordered" size="sm">
+          <CustomButton href="/auth/login" variant="bordered" size="sm">
             Login
           </CustomButton>
         </ul>

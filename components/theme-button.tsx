@@ -15,7 +15,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="rounded-md border p-2 border-primary cursor-pointer dark:border-gray-700 hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-200"
+      className="rounded-md border p-2 dark:text-white border-primary cursor-pointer dark:border-gray-700 hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-200"
     >
       {theme === "dark" ? <IoIosMoon /> : <IoIosSunny />}
     </button>
