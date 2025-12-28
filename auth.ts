@@ -6,8 +6,8 @@ import { getUserByEmail, getUserById } from "@/data/user";
 import bcrypt from "bcryptjs";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
-// import clientPromise from "@/lib/mongoDb";
-// import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "@/lib/mongoDb";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { ObjectId } from "mongodb";
 import { User } from "@/schemas/User";
 
@@ -22,7 +22,7 @@ declare module "next-auth" {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  //   adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise),
   ...authConfig,
   pages: {
     signIn: "/auth/login",
@@ -68,11 +68,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   callbacks: {
     async signIn({ user, account }) {
-      // if (account?.provider !== "credentials") return true;
-      // const existingUser = await getUserById(user.id!);
+      if (account?.provider !== "credentials") return true;
+      const existingUser = await getUserById(user.id!);
 
       // prevent sign in without email verification
-      // if (!existingUser?.emailVerified) return false;
+      if (!existingUser?.emailVerified) return false;
 
       // ToDO : Add 2FA Check
 
