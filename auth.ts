@@ -9,7 +9,7 @@ import Google from "next-auth/providers/google";
 import clientPromise from "@/lib/mongoDb";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { ObjectId } from "mongodb";
-import { User } from "@/schemas/User";
+import { User } from "@/schemas";
 
 type ExtendedUser = DefaultSession["user"] & {
   role: "admin" | "user";

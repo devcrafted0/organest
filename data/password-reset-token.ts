@@ -1,5 +1,5 @@
 import { connectDB } from "@/lib/db";
-import { PasswordResetToken } from "@/schemas/PasswordResetToken";
+import { PasswordResetToken } from "@/schemas";
 
 export const getPasswordResetTokenByEmail = async (email: string) => {
   try {

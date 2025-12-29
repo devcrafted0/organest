@@ -1,5 +1,5 @@
 import { connectDB } from "@/lib/db";
-import { User } from "@/schemas/User";
+import { User } from "@/schemas";
 
 export const getUserByEmail = async (email: string) => {
   try {

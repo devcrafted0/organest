@@ -1,5 +1,5 @@
 import { connectDB } from "@/lib/db";
-import { VerificationToken } from "@/schemas/VerificationToken";
+import { VerificationToken } from "@/schemas";
 
 export const getVerificationTokenByEmail = async (email: string) => {
   try {

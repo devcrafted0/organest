@@ -2,8 +2,8 @@
 
 import { getUserByEmail } from "@/data/user";
 import { getVerificationTokenByToken } from "@/data/verification-token";
-import { User } from "@/schemas/User";
-import { VerificationToken } from "@/schemas/VerificationToken";
+import { User } from "@/schemas";
+import { VerificationToken } from "@/schemas";
 
 export const newVerification = async (token: string) => {
   const existingToken = await getVerificationTokenByToken(token);
