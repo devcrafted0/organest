@@ -47,10 +47,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             role: user.role,
           };
 
-          console.log(returningUser);
-
           if (passwordMatch) {
-            return returningUser;
+            return user;
           }
         }
         // This return null is to fix a error not work too much in logic may be
