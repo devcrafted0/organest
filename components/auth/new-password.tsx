@@ -1,7 +1,7 @@
 "use client";
 import { CardWrapper } from "./card-wrapper";
 import { useForm } from "react-hook-form";
-import { NewPasswordSchema } from "@/schemas";
+import { NewPasswordSchema } from "@/schemas/FormValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 

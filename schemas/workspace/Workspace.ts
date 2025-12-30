@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, model } from "mongoose";
+import mongoose, { Schema, Document, model, models } from "mongoose";
 
 export interface IWorkspace extends Document {
   name: string;
@@ -38,4 +38,5 @@ const workspaceSchema = new Schema<IWorkspace>(
   }
 );
 
-export const Workspace = model<IWorkspace>("Workspace", workspaceSchema);
+export const Workspace =
+  models.Workspace || model<IWorkspace>("Workspace", workspaceSchema);

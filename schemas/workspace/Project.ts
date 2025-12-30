@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, model } from "mongoose";
+import mongoose, { Schema, Document, model, models } from "mongoose";
 
 export interface IProject extends Document {
   workspace: mongoose.Types.ObjectId; // reference to workspace
@@ -36,4 +36,5 @@ const projectSchema = new Schema<IProject>(
   }
 );
 
-export const Project = model<IProject>("Project", projectSchema);
+export const Project =
+  models.Project || model<IProject>("Project", projectSchema);

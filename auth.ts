@@ -1,7 +1,7 @@
 import NextAuth, { DefaultSession } from "next-auth";
 import authConfig from "@/auth.config";
 import Credentials from "next-auth/providers/credentials";
-import { LoginSchema } from "@/schemas";
+import { LoginSchema } from "@/schemas/FormValidation";
 import { getUserByEmail, getUserById } from "@/data/user";
 import bcrypt from "bcryptjs";
 import GitHub from "next-auth/providers/github";
@@ -66,7 +66,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   callbacks: {
     async signIn({ user, account }) {
-      if (account?.provider !== "credentials") return true;
+      if (account) {
+        if (account?.provider !== "credentials") return true;
+      }
       const existingUser = await getUserById(user.id!);
 
       // prevent sign in without email verification
@@ -99,14 +101,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   events: {
     // Side event when user is being created
-    // async createUser({ user }) {
-    //   const client = await clientPromise;
-    //   const db = client.db();
+    async createUser({ user }) {
+      const client = await clientPromise;
+      const db = client.db();
 
-    //   await db
-    //     .collection("users")
-    //     .updateOne({ _id: new ObjectId(user.id) }, { $set: { role: "user" } });
-    // },
+      await db
+        .collection("users")
+        .updateOne({ _id: new ObjectId(user.id) }, { $set: { role: "user" } });
+    },
     async linkAccount({ user }) {
       await User.updateOne(
         { _id: new ObjectId(user.id) },

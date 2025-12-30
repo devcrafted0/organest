@@ -1,7 +1,7 @@
 "use client";
 import { CardWrapper } from "@/components/auth/card-wrapper";
 import { useForm } from "react-hook-form";
-import { RegisterSchema } from "@/schemas";
+import { RegisterSchema } from "@/schemas/FormValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
